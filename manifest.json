@@ -1,41 +1,53 @@
 {
-    "name": "ReactFlix",
-    "short_name": "RfliX",
-    "description": "A modern movie streaming platform built with React.",
-    "start_url": "/reactflix/",
-    "scope": "/reactflix/",
-    "display": "fullscreen",
-    "background_color": "#000000",
-    "theme_color": "#1f2937",
-    "orientation": "portrait",
-    "icons": [
-      {
-        "src": "./icon-192.png",
-        "sizes": "192x192",
-        "type": "image/png"
-      },
-      {
-        "src": "./icon-512.png",
-        "sizes": "512x512",
-        "type": "image/png"
-      }
-    ],
-    "screenshots": [
-      {
-        "src": "./1.jpg",
-        "sizes": "1080x1920",
-        "type": "image/jpg"
-      },
-      {
-        "src": "./2.jpg",
-        "sizes": "1080x1920",
-        "type": "image/jpg"
-      },
-      {
-        "src": "./3.jpg",
-        "sizes": "1080x1920",
-        "type": "image/jpg"
-      }
-    ]
-  }
-  
+  "name": "ReactFlix",
+  "short_name": "RanjanFlix",
+  "description": "A modern and sleek movie streaming platform built with React, offering seamless entertainment experiences.",
+  "start_url": "/reactflix/",
+  "scope": "/reactflix/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#1f2937",
+  "orientation": "portrait",
+  "lang": "en",
+  "dir": "ltr",
+  "categories": ["entertainment", "movies", "streaming"],
+  "icons": [
+    {
+      "src": "./icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "./icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "./icon-maskable.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "./1.jpg",
+      "sizes": "1080x1920",
+      "type": "image/jpg"
+    },
+    {
+      "src": "./2.jpg",
+      "sizes": "1080x1920",
+      "type": "image/jpg"
+    },
+    {
+      "src": "./3.jpg",
+      "sizes": "1080x1920",
+      "type": "image/jpg"
+    }
+  ],
+  "prefer_related_applications": false,
+  "related_applications": [],
+  "author": "Ranjan",
+  "version": "1.0.0"
+}
