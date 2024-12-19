@@ -112,7 +112,7 @@ const Landing = () => {
                   <div className="mt-4 sm:mt-6 md:mt-5 flex gap-2 ">
                     <button
                       onClick={() => fetchTrailer(movie.id)}
-                      className="backdrop-blur-lg bg-black/10 flex items-center gap-1 border border-white px-3 py-2 rounded-sm hover:bg-white hover:text-black transition"
+                      className="bg-gradient-to-r from-cyan-500 to-blue-500 flex items-center gap-1 px-3 py-2 rounded-sm"
                     >
                       <GoPlay />{" "}
                       <span className="hidden sm:inline">Watch Trailer</span>

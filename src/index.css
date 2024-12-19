@@ -117,7 +117,7 @@ body {
 .gr{
   background: linear-gradient(200deg, transparent 50%, #000000 100%),
   linear-gradient(200deg, transparent 30%, #000000 100%),
-  linear-gradient(200deg, transparent 10%, #000000 100%);
+  linear-gradient(180deg, transparent 10%, #000000 100%);
 }
 .custom-bullet {
   height: 3rem; /* h-8 */

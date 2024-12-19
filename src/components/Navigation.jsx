@@ -4,34 +4,9 @@ import { NavLink } from "react-router-dom";
 import Search from "./Search";
 
 const Navigation = () => {
-  const [isVisible, setIsVisible] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      if (currentScrollY > lastScrollY) {
-        // Scrolling down
-        setIsVisible(false);
-      } else {
-        // Scrolling up
-        setIsVisible(true);
-      }
-      setLastScrollY(currentScrollY);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, [lastScrollY]);
-
   return (
     <div
-      className={`fixed z-50 w-full h-16 max-w-lg -translate-x-1/2 rounded-t-lg border border-inherit bottom-0 left-1/2 bg-black/60 backdrop-blur-lg overflow-hidden transition-transform duration-300 ${
-        isVisible ? "translate-y-0" : "translate-y-full"
-      }`}
+      className="fixed z-50 w-full h-16 max-w-lg -translate-x-1/2 rounded-t-lg border border-inherit bottom-0 left-1/2 bg-black/60 backdrop-blur-lg overflow-hidden transition-transform duration-300"
     >
       <div className="grid grid-cols-3 items-center w-full h-full justify-center">
         <NavLink to="/" className="inline h-full">

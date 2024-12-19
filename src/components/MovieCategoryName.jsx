@@ -10,7 +10,7 @@ const MovieCategoryName = ({ title, linkTo }) => {
       </h2>
       {linkTo ? (
         <NavLink to={linkTo}>
-          <button className="py-1 rounded-full text-sm lg:text-md flex items-center text-blue-300">
+          <button className="py-1 rounded-full text-md lg:text-lg flex items-center text-blue-400">
             View all
             <LiaAngleRightSolid size={15} />
           </button>

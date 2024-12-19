@@ -19,9 +19,9 @@ const Header = () => {
       <div className="flex items-center gap-4 justify-end w-full">
         <Search size={20} />
         <NavLink to={`/watchlist`}>
-          <i className="text-white transition-colors">
+          <div className="text-white transition-colors px-5 py-1 border border-zinc-500 rounded-full hover:bg-gradient-to-r from-cyan-500 to-blue-500 hover:border-none ">
             <GoHeart size={20} />
-          </i>
+          </div>
         </NavLink>
       </div>
     </div>

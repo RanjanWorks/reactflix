@@ -423,7 +423,7 @@ export default function MovieDetails() {
           <div>
             <span
               style={{ background: textColor1, color: Bg }}
-              className="py-2 px-5  rounded-full text-sm"
+              className="py-2 px-5  rounded-r-full text-sm"
             >
               Score | {Math.round(movie.vote_average * 10)}%
             </span>

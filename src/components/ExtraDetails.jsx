@@ -94,19 +94,19 @@ const ExtraDetails = ({ movie, Bg, textColor1, movieKeywords }) => {
         <div className="flex  mt-2">
           <button
             onClick={redirectServer1}
-            className="border border-slate-50/10 px-2 py-1 rounded-l-md text-xs flex items-center gap-2"
+            className="bg-black bg-opacity-10 px-2 py-1 rounded-l-md text-xs flex items-center gap-2"
           >
             Jalshamoviez <FiExternalLink />
           </button>
           <button
             onClick={redirectServer2}
-            className="border border-slate-50/10 px-2 py-1  text-xs flex items-center gap-2"
+            className="bg-black bg-opacity-10 px-2 py-1  text-xs flex items-center gap-2"
           >
             Filmyfly <FiExternalLink />
           </button>
           <button
             onClick={redirectServer3}
-            className="border border-slate-50/10 px-2 py-1 rounded-r-md text-xs flex items-center gap-2"
+            className="bg-black bg-opacity-10 px-2 py-1 rounded-r-md text-xs flex items-center gap-2"
           >
             FilmyZilla <FiExternalLink />
           </button>
@@ -118,7 +118,7 @@ const ExtraDetails = ({ movie, Bg, textColor1, movieKeywords }) => {
           <div className="flex items-start gap-1 flex-wrap">
             {movieKeywords.map((item) => (
               <p
-                className="border border-slate-50/10 px-2 py-1 text-xs rounded-sm"
+                className=" bg-black bg-opacity-10 px-2 py-1 text-xs rounded-sm"
                 key={item.id}
               >
                 {item.name}
