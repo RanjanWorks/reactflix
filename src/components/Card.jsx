@@ -17,7 +17,7 @@ const Card = ({ movie, onRemoveFromWatchlist, cancel }) => {
   } = movie;
 
   return (
-    <div className=" rounded-xl max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg">
+    <div className=" rounded-xl max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg ">
       <div className="relative">
         {cancel == true ? (
           <button
@@ -31,7 +31,7 @@ const Card = ({ movie, onRemoveFromWatchlist, cancel }) => {
         )}
         <NavLink to={`/movie/${id}`}>
           <LazyLoadImage
-            className="h-auto w-full rounded-lg cursor-pointer"
+            className="h-auto w-full rounded-lg cursor-pointer border shadow-md"
             src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
             alt={title}
             effect="blur"

@@ -69,6 +69,7 @@
 body {
   min-height: 100vh;
 }
+
 ::-webkit-scrollbar {
   width: 5px;
 }
@@ -118,6 +119,9 @@ body {
   background: linear-gradient(200deg, transparent 50%, #000000 100%),
   linear-gradient(200deg, transparent 30%, #000000 100%),
   linear-gradient(180deg, transparent 10%, #000000 100%);
+}
+.no-scroll::-webkit-scrollbar {
+  display: none;
 }
 .custom-bullet {
   height: 3rem; /* h-8 */

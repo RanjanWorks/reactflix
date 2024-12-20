@@ -3,7 +3,6 @@ import { MovieSkeleton } from "./MovieSkeletion";
 import { Carousel } from "./Carousel";
 import MovieCategoryName from "./MovieCategoryName";
 import { toast } from "sonner";
-import DiscoverMovies from "./DiscoverMovies";
 
 const fetchWithTimeout = async (url, options = {}, timeout = 25000) => {
   return Promise.race([
@@ -153,12 +152,14 @@ export default function MovieCarousel() {
         </div>
       ) : (
         <div className="container mx-auto px-4 ">
+          
           {Object.entries(movies).map(([key, movieList]) => (
             <div className="pb-4 " key={key}>
               <MovieCategoryName
                 title={key.replace(/^\w/, (c) => c.toUpperCase())}
                 linkTo={`/movies/${key}`}
               />
+              
               {movieList.length > 0 ? (
                 <Carousel movies={movieList} />
               ) : (
@@ -168,7 +169,7 @@ export default function MovieCarousel() {
           ))}
         </div>
       )}
-      <DiscoverMovies/>
+      
     </div>
   );
 }

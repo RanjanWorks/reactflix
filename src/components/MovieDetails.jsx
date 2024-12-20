@@ -51,6 +51,7 @@ export default function MovieDetails() {
   const [crew, setCrew] = useState([]);
   const [backdrops, setBackdrops] = useState([]);
   const [movieKeywords, setKeywords] = useState([]);
+  const [rating, setRating] = useState(null);
   const [trailer, setTrailer] = useState(null);
   const [loading, setLoading] = useState(true);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -73,23 +74,17 @@ export default function MovieDetails() {
     setHasMovie(playlist.includes(Number(id)));
   }, [id]);
 
-
   useEffect(() => {
     const handleResize = () => {
-      // Check if the device width is large or small
       if (window.innerWidth >= 1024) {
-        // Assuming 1024px as the breakpoint for large devices
-        setPercentage(30); // Set to 30% for large devices
+        setPercentage(30);
       } else {
-        setPercentage(100); // Set to 100% for small devices
+        setPercentage(100);
       }
     };
 
-    // Call handleResize on initial load and window resize
     handleResize();
     window.addEventListener("resize", handleResize);
-
-    // Cleanup event listener on component unmount
     return () => {
       window.removeEventListener("resize", handleResize);
     };
@@ -107,6 +102,7 @@ export default function MovieDetails() {
           `https://api.themoviedb.org/3/movie/${id}/videos?api_key=${apiKey}`,
           `https://api.themoviedb.org/3/movie/${id}/images?api_key=${apiKey}`,
           `https://api.themoviedb.org/3/movie/${id}/keywords?api_key=${apiKey}`,
+          `https://api.themoviedb.org/3/movie/${id}/release_dates?api_key=${apiKey}`,
         ];
 
         const [
@@ -116,6 +112,7 @@ export default function MovieDetails() {
           trailerRes,
           backdropRes,
           keywordsRes,
+          ratingRes,
         ] = await Promise.all(urls.map(fetchWithErrorHandling));
 
         if (movieRes.status_code === 34) {
@@ -156,6 +153,18 @@ export default function MovieDetails() {
         setCredits(creditRes.cast || []);
         setBackdrops(backdropRes || []);
         setKeywords(keywordsRes.keywords || []);
+
+        const usRating = ratingRes.results.find(
+          (entry) => entry.iso_3166_1 === movieRes.origin_country[0]
+        );
+        if (usRating) {
+          const certification = usRating.release_dates.find(
+            (release) => release.certification
+          );
+          setRating(certification ? certification.certification : "NR");
+        } else {
+          setRating("NR");
+        }
 
         const imageUrl = `https://image.tmdb.org/t/p/w500/${movieRes.poster_path}?not-from-cache-please`;
         try {
@@ -322,6 +331,10 @@ export default function MovieDetails() {
               {movie.title} ({movie.release_date.split("-")[0]})
             </h1>
             <p className="text-sm lg:text-base">
+              <span className="px-1 border-inherit border border-opacity-5 bg-black bg-opacity-5 mr-1">
+           
+                {rating}
+              </span>
               {movie.original_language.toUpperCase()} |{" "}
               {movie.genres.map((genre) => genre.name).join(", ")} |{" "}
               {convertMinutesToTime(movie.runtime)}
@@ -430,7 +443,10 @@ export default function MovieDetails() {
           </div>
           <div className="flex flex-wrap items-start gap-y-1 py-4 px-2  mt-2 rounded-lg backdrop-blur-lg bg-black bg-opacity-5">
             {Object.entries(crew).map(([id, { name, jobs }]) => (
-              <div key={id} className="flex flex-col items-start text-start w-1/2 lg:w-1/3 xl:w-1/4">
+              <div
+                key={id}
+                className="flex flex-col items-start text-start w-1/2 lg:w-1/3 xl:w-1/4"
+              >
                 <NavLink to={`/person/${id}`}>
                   {" "}
                   <span className="text-md font-semibold">{name}</span>
