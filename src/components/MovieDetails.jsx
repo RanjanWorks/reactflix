@@ -11,6 +11,11 @@ import {
 import "react-lazy-load-image-component/src/effects/blur.css";
 import { NavLink, useParams } from "react-router-dom";
 import { toast } from "sonner";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
 
 import {
   Drawer,
@@ -40,6 +45,7 @@ import { BackdropCarousel } from "./BackdropCarousel";
 import ExtraDetails from "./ExtraDetails";
 import { useNavigate } from "react-router-dom";
 import Loader from "./Loader";
+import movieRatings from "@/lib/Rating";
 
 export default function MovieDetails() {
   const { id } = useParams();
@@ -330,10 +336,15 @@ export default function MovieDetails() {
             <h1 className="text-2xl sm:text-3xl lg:text-4xl font-semibold">
               {movie.title} ({movie.release_date.split("-")[0]})
             </h1>
-            <p className="text-sm lg:text-base">
-              <span className="px-1 border-inherit border border-opacity-5 bg-black bg-opacity-5 mr-1">
-           
-                {rating}
+            <p className="text-sm lg:text-base ">
+              <span className="px-1 border-black border border-opacity-10 bg-black bg-opacity-5 mr-1">
+                <Popover>
+                  <PopoverTrigger>
+                    {rating} 
+                  </PopoverTrigger>
+                  <PopoverContent>{movieRatings[rating]}</PopoverContent>
+            
+                </Popover>
               </span>
               {movie.original_language.toUpperCase()} |{" "}
               {movie.genres.map((genre) => genre.name).join(", ")} |{" "}
