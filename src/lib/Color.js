@@ -1,4 +1,3 @@
-
 import ColorThief from "colorthief";
 
 export const getDominantColor = (imageUrl) => {
@@ -7,10 +6,13 @@ export const getDominantColor = (imageUrl) => {
     const img = new Image();
     img.crossOrigin = "anonymous";
     img.src = imageUrl;
+
     img.onload = () => {
       try {
-        const dominantColor = colorThief.getColor(img); // Returns the dominant color in RGB
-        resolve(dominantColor); // Directly return RGB
+        // Optionally, use getPalette for more context-specific results
+        const palette = colorThief.getPalette(img, 5); // Top 5 colors
+        const dominantColor = palette[0]; // Choose the most dominant color
+        resolve(dominantColor);
       } catch (error) {
         reject("Failed to extract dominant color");
       }
@@ -19,4 +21,3 @@ export const getDominantColor = (imageUrl) => {
     img.onerror = () => reject("Image failed to load");
   });
 };
- 

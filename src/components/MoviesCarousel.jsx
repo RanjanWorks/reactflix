@@ -54,6 +54,10 @@ export default function MovieCarousel() {
 
     const endpoints = [
       {
+        key: "Trending Movies Today",
+        url: `/trending/movie/day`,
+      },
+      {
         key: "Sci-Fi Movies",
         url: `/discover/movie?api_key=${apiKey}&sort_by=revenue.desc&with_genres=878`,
       },
@@ -64,11 +68,6 @@ export default function MovieCarousel() {
       {
         key: "Popular Hindi Movies",
         url: `/discover/movie?api_key=${apiKey}&sort_by=popularity.desc&with_original_language=hi&region=IN`,
-      },
-  
-      {
-        key: "Trending Movies Today",
-        url: `/trending/movie/day`,
       },
       {
         key: "Most Popular Movies",

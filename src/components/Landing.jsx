@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { redirect, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { GoPlay } from "react-icons/go";
-
-import { FaRightFromBracket } from "react-icons/fa6";
-
 import {
   Drawer,
   DrawerClose,
@@ -20,11 +17,13 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/effect-fade";
 import { toast } from "sonner";
+import { Skeleton } from "./ui/skeleton";
 
 const Landing = () => {
   const [movies, setMovies] = useState([]);
   const [selectedTrailer, setSelectedTrailer] = useState(null);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
   const apiKey = import.meta.env.VITE_API_KEY;
   const apiUrl = `https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}&language=en-US&page=1&region=IN`;
   const navigate = useNavigate();
@@ -34,10 +33,12 @@ const Landing = () => {
 
   useEffect(() => {
     const fetchMovies = async () => {
+      setLoading(true)
       try {
         const response = await fetch(apiUrl);
         const data = await response.json();
         setMovies(data.results);
+        setLoading(false)
       } catch (error) {
         console.error("Error fetching movie data:", error);
       }
@@ -65,6 +66,25 @@ const Landing = () => {
       console.error("Error fetching trailer:", error);
     }
   };
+
+  if (loading) {
+    return (
+      <div className="relative w-full h-[50vh] sm:h-[70vh] md:h-[80vh] lg:h-[90vh] rounded-b-lg overflow-hidden mb-5">
+        <Skeleton className="absolute inset-0 w-full h-full" />
+        <div className="absolute z-50 top-3/4 left-4 sm:left-6 md:left-8 lg:left-12 transform -translate-y-1/2">
+          <div>
+            <Skeleton className="h-4 w-1/2 mb-2" />
+            <Skeleton className="h-8 w-3/4 mb-2 lg:h-12" />
+            <Skeleton className="h-4 w-full lg:w-1/2 mt-1 sm:mt-2" />
+          </div>
+          <div className="mt-4 sm:mt-6 md:mt-5 flex gap-2">
+            <Skeleton className="h-10 w-32 rounded-sm" />
+            <Skeleton className="h-10 w-24 rounded-sm" />
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <section className="relative ">

@@ -7,6 +7,7 @@ import {
   GoShare,
   GoDownload,
   GoPlay,
+  GoAlert ,
 } from "react-icons/go";
 import "react-lazy-load-image-component/src/effects/blur.css";
 import { NavLink, useParams } from "react-router-dom";
@@ -284,9 +285,11 @@ export default function MovieDetails() {
   if (loading) return <Loader color={Bg || "gray"} loading={true} size={20} />;
   if (error)
     return (
-      <div className="flex items-center justify-center h-screen text-2xl text-orange-500">
-        {" "}
-        {error}{" "}
+      <div className="flex items-center justify-center h-screen text-2xl text-red-500">
+       <span className="border rounded-md flex items-center px-3 py-1 gap-2">
+       <GoAlert />
+       {error}
+       </span>
       </div>
     );
 
@@ -342,7 +345,7 @@ export default function MovieDetails() {
                   <PopoverTrigger>
                     {rating} 
                   </PopoverTrigger>
-                  <PopoverContent>{movieRatings[rating]}</PopoverContent>
+                  <PopoverContent>{movieRatings[rating]||"N/R"}</PopoverContent>
             
                 </Popover>
               </span>

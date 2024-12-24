@@ -23,7 +23,8 @@ const movieRatings = {
   "12+": "12+ - Suitable for ages 12 and older",
   "16+": "16+ - Suitable for ages 16 and older",
   "18+": "18+ - Suitable for ages 18 and older",
-  "NR": "NOT Rated"
+  "NR": "Not Rated !",
+  "U/A 13+": "content is suitable for audiences aged 13 and older. However, parental guidance is advised for viewers under the age of 13"
 };
 
 export default movieRatings;
